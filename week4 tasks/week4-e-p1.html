@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Week 4 eportfolio part 1</title>
+</head>
+<body>
+	<!-- set form action to https://lms.pb.edu.bn/qwerty/displaypost.php 
+		hint: this form accepts file! so configure the form correctly-->
+<form action="https://lms.pb.edu.bn/qwerty/displaypost.php" method="post" enctype="multipart/form-data">
+
+<label for="village"><h3>Select the village</h3></label>
+<input list="village" name="village"><br>
+	<datalist id="village">
+		<option value="Berakas A">
+		<option value="Lambak">
+		<option value="Labu Estate">
+		<option value="Birau">
+		<option value="Luagan Duduk">
+		<option value="Kuala Belait">
+		<option value="Lamunin">
+		<option value="Subok">
+		<option value="Pengkalan Batu">
+		<option value="Selangan">
+	</datalist>
+
+<!-- use datalist element for the list of villages 
+	Berakas A
+	Lambak
+	Labu Estate
+	Birau
+	Luagan Duduk
+	Kuala Belait
+	Lamunin
+	Subok
+	Pengkalan Batu
+	Selangan		
+-->
+
+<!-- 
+write correct patterns to achieve the requirement as stated in the <h3> elements
+DO NOT CHANGE THE values of the NAME attributes in each element!!!
+-->
+
+<label for="word"><h3>Enter A WORD at least 6 characters. The word must not contain lowercase or uppercase  t, h, s </h3></label>
+<input type="text" pattern="[^thsTHS]{6}" name="word"><br>
+
+<label for="minmax"><h3>Replace the min, max and step attributes to equivalent pattern. change type to text</h3></label>
+<input type="text" name="numbers" pattern="(3|6|9|12)"><br>
+<!-- min="3" max="12" step="3" -->
+
+<label for="picture"><h3>Upload your latest picture for class listing!</h3></label>
+<input type="file" name="selfie" accept="img/png, img/gif, img/jpg"><br>	
+
+<h3>Try the \W pattern! write your finding in self reflection</h3>
+<input type="text" pattern="\w{3,}" name="W-sample"><br>
+
+<h3>Try the \D pattern! write your finding in self reflection</h3>
+<input type="text" pattern="\d{3,}" name="D-sample"><br>
+
+<!-- WRITE THE REQUIRED PATTERN -->
+<h3>Last but not least.. Enter a sentence, mininum 10 characters and maximum 30 characters. Allow: numbers, alphabet lowercase & uppercase, spaces and question mark</h3>
+<input type="text" pattern=".{10,30}" name="wsdot-sample" size="30"><br>
+
+<!-- so what's hidden? write your finding in reflection -->
+<input type="hidden" id="submit" value="bwep2022">
+<p><input type="submit" value="Submit Query"></p>
+</form>
+</body>
+</html>
