@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>week 6 eportfolio</title>
+	<style>
+	/*
+		THIS TASK REQUIRE YOU TO USE POSITION TO MOVE ELEMENTS AND PADDING TO ACHIEVE SPACING SURROUNDING THE CONTENT
+	*/
+
+		/*ORGANIZE YOUR CSS IN THE FOLLOWING ORDER
+
+		1. ELEMENT SELECTOR
+		2. ID SELECTOR
+		3. CLASS SELECTOR
+		4. DESCENDENT SELECTOR
+		5. CHILD SELECTOR
+		6. SIBLING SELECTOR
+		7. ATTRIBUTE SELECTOR
+		8. PSEUDO CLASS SELECTOR
+
+		FAILURE TO COMPLY WILL RESULTS IN MARK DEDUCTION*/
+
+		img{
+			width: 180px;
+			height: 120px;
+			padding: 10px;
+		}
+
+		p{
+			padding: 10px;
+			font-size: 1.2em;
+			display: inline-block;
+			vertical-align: text-top;
+		}
+
+
+		h4{
+			position: relative;
+			z-index: 4;
+			top: -145px;
+			left: 200px;
+		}
+
+		#two{
+			position: relative;
+			z-index: 3;
+			left: 50px;
+		}
+
+		#three{
+			position: relative;
+			z-index: 2;
+			left: -100px;
+		}
+
+		#four{
+			position: relative;
+			z-index: 1;
+			left: -250px;
+		}
+
+		.z{
+			position: relative;
+			display: inline;
+		}
+
+		.menu{
+			height: 5vh;
+			background-color: skyblue;
+			text-align: center;
+		}
+
+		.stickit{
+			position: sticky;
+			top: 0;
+		}
+
+		.container{
+			width: 50%;
+			height: 95vh;
+			margin: auto;
+			justify-content: center;
+			overflow: scroll;
+			overflow-x: hidden;
+		}
+
+		/*.psuedo>article:nth-of-type(odd){color: lightcoral;} - KFC and Ideal*/
+
+		.psuedo>article:nth-child(odd){color: lightcoral;} /*- KFC and Burger King*/
+
+		img[alt="righty"]{float: right;}
+		img[alt="lefty"]{float: left;}
+		
+	</style>
+</head>
+<body>
+<!-- INSTRUCTIONS
+		YOU ARE NOT ALLOWED TO CHANGE ANY PART OF THE HTLM CODES (SUCH AS ADDING ID attributes or additional values to the classes atributes.) 
+	
+	YOU CAN CHANGE IMAGE SRC VALUES ONLY-->
+
+<div class="container">
+<div class="menu"><a href="#">Nav1</a> | <a href="#">Nav2</a> | <a href="#">Nav3</a> | <a href="#">Nav4</a></div>
+<p><img src="../v-1.jpg" alt="righty">
+Lorem ipsum dolor sit amet consectetur adipisicing, elit. Nesciunt vero, magni natus maiores dicta laudantium harum, delectus, quia accusamus, eos fugiat nulla quidem sequi! Modi impedit vel autem quas ullam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, eveniet et fugit natus? Natus sit, eveniet rem neque perspiciatis vitae fugit ea sint, ad debitis, nostrum libero accusantium distinctio quibusdam?Lorem ipsum dolor sit amet consectetur adipisicing, elit. Dolores ipsum, accusantium officiis? Voluptatibus dignissimos ratione autem delectus ad? Maxime est quod tempore, placeat cumque suscipit ab repudiandae officiis hic deleniti.</p>
+<div class="menu stickit"><h3>Wanna see more??</h3></div>
+
+<p><img src="../assets/images/v-3.jpg" alt="lefty">
+Lorem ipsum dolor sit amet consectetur adipisicing, elit. Nesciunt vero, magni natus maiores dicta laudantium harum, delectus, quia accusamus, eos fugiat nulla quidem sequi! Modi impedit vel autem quas ullam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, eveniet et fugit natus? Natus sit, eveniet rem neque perspiciatis vitae fugit ea sint, ad debitis, nostrum libero accusantium distinctio quibusdam?Lorem ipsum dolor sit amet consectetur adipisicing, elit. Dolores ipsum, accusantium officiis? Voluptatibus dignissimos ratione autem delectus ad? Maxime est quod tempore, placeat cumque suscipit ab repudiandae officiis hic deleniti.</p>
+
+
+<p><img src="../assets/images/v-2.jpg" alt="righty">
+Lorem ipsum dolor sit amet consectetur adipisicing, elit. Nesciunt vero, magni natus maiores dicta laudantium harum, delectus, quia accusamus, eos fugiat nulla quidem sequi! Modi impedit vel autem quas ullam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, eveniet et fugit natus? Natus sit, eveniet rem neque perspiciatis vitae fugit ea sint, ad debitis, nostrum libero accusantium distinctio quibusdam?Lorem ipsum dolor sit amet consectetur adipisicing, elit. Dolores ipsum, accusantium officiis? Voluptatibus dignissimos ratione autem delectus ad? Maxime est quod tempore, placeat cumque suscipit ab repudiandae officiis hic deleniti.</p>
+
+
+<p><img src="../assets/images/v-4.jpg" alt="lefty">
+Lorem ipsum dolor sit amet consectetur adipisicing, elit. Nesciunt vero, magni natus maiores dicta laudantium harum, delectus, quia accusamus, eos fugiat nulla quidem sequi! Modi impedit vel autem quas ullam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, eveniet et fugit natus? Natus sit, eveniet rem neque perspiciatis vitae fugit ea sint, ad debitis, nostrum libero accusantium distinctio quibusdam?Lorem ipsum dolor sit amet consectetur adipisicing, elit. Dolores ipsum, accusantium officiis? Voluptatibus dignissimos ratione autem delectus ad? Maxime est quod tempore, placeat cumque suscipit ab repudiandae officiis hic deleniti.</p>
+
+<h3>demo between nth-child and nth-type-of - write your finding in self reflection</h3>
+	<div class="psuedo">
+	<article>KFC</article>
+	<aside>McD</aside>
+	<article>Burger King</article>
+	<article>Ideal</article>
+	<aside>Jolibee</aside>
+</div>
+<h3>demo z-index - so what is the most important thing when using z-index? write in your reflection</h3>
+<div class="z">
+	<img src="../assets/images/v-2.jpg" id="two">
+	<img src="../assets/images/v-3.jpg" id="three">
+	<img src="../assets/images/v-4.jpg" id="four">
+	<h4>sample images</h4>
+</div>
+
+</div>
+</body>
+</html>
