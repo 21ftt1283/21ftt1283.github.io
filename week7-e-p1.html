@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Week 7 ePortfolio part 1</title>
+	<style type="text/css">
+		body{
+			margin: 0 auto;
+			max-width: 600px;
+			text-align: center;
+			align-self: center;
+		}
+
+		tr{
+			display: grid;
+			border: 1px solid;
+			grid-template-columns: 65% 35%;
+			width: 600px;
+			text-align: left;
+			grid-gap: 20px;
+			padding: 10px;
+		}
+
+		tr:nth-child(9),
+		tr:nth-child(10),
+		tr:nth-child(11),
+		tr:nth-child(12),
+		tr:nth-child(13),
+		tr:nth-child(14),
+		tr:nth-child(15){
+			grid-template-columns: 100%;
+			padding: 10px;
+			width: 600px;
+			justify-self: center;
+			text-align: center;
+
+		}
+
+	</style>
+</head>
+<body>
+<h3>Registration for Covid-19 Volunteer - &reg C19-Team</h3>
+
+<form method="" action="">
+	<!-- border="1" cellpadding="10" width="425" -->
+<table>
+	<tr>
+		<td><label for="Fullname">Fullname</label></td>
+		<td><input type="text" name="Fullname" id="Fullname" maxlength="30"></td>
+	</tr>
+	<tr>
+		<td><label for="email">Email</label></td>
+		<td><input type="email" name="email" id="email" pattern=".+@globex\.com" required></td>
+	</tr>
+	<tr>
+		<td><label for="Date">Date you can start</label></td>
+		<td><input type="date" name="Date" id="Date"></td>
+	</tr>
+	<tr>
+		<td><label for="Morning">Morning shift preference</label></td>
+		<td><input type="time" name="Morning" id="Morning"></td>
+	</tr>
+	<tr>
+		<td><label for="Evening">Evening shift preference</label></td>
+		<td><input type="time" name="Evening" id="Evening"></td>
+	</tr>
+	<tr>
+		<td><label for="Hours">How many hours you can work? In multiple of 3</label></td>
+		<td><input type="number" name="Hours" id="Hours" min="3" max="9"></td>
+	</tr>
+	<tr>
+		<td><label for="Distance">Distance you willing to commute to volunteer center?</label></td>
+		<td>1<input type="range" name="Distance" id="Distance" value="3" min="1" max="15">15</td>
+	</tr>
+	<tr>
+		<td>
+			<label for="Currency">Your currency perference for payment?</label>
+		</td>
+		<td><input type="radio" name="Currency" id="&pound" value="&pound">
+			<label for="&pound">&pound</label>
+			<input type="radio" name="Currency" id="&yen" value="&yen">
+			<label for="&yen">&yen</label>
+			<input type="radio" name="Currency" id="&#128" value="&#128">
+			<label for="&#128">&#128</label>
+		</td>
+	</tr>
+	<tr>
+
+		<!-- colspan="2" align="middle" -->
+		<td>
+			<textarea rows="6" cols="40" placeholder="Type your home address"></textarea>
+		</td>
+	</tr>
+	<tr>	
+		<td>
+			<s>You will be given daily meals</s>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="checkbox" name="t&c" disabled checked>
+			<label>I agree to all terms and conditions</label>
+		</td>
+	</tr>
+	<tr>
+		<td>Prove you are not robot: 10 &lt 20?
+			<input type="checkbox" name="robot">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="submit" value="Volunteer now!">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="reset" value="Start over">
+		</td>
+	</tr>
+	<tr>
+		<td>For more informaton, visit MOH <a href="https://www.moh.gov.bn/Pages/Home.aspx" target="_blank" rel="noopener noreferrer">website</td>
+	</tr>
+</tr>
+
+</table>
+</form>
+</body>
+</html>
