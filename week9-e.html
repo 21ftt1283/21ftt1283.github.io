@@ -1,0 +1,223 @@
+<html !DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+
+  <style type="text/css">
+
+/*
+    THIS TASK REQUIRE YOU TO USE CSS GRID AND THEIR RELATED PROPERTIES
+  */
+
+    /*ORGANIZE YOUR CSS IN THE FOLLOWING ORDER, IF APPLICABLE
+
+    1. ELEMENT SELECTOR
+    2. ID SELECTOR
+    3. CLASS SELECTOR
+    4. DESCENDENT SELECTOR
+    5. CHILD SELECTOR
+    6. SIBLING SELECTOR
+    7. ATTRIBUTE SELECTOR
+    8. PSEUDO CLASS SELECTOR
+
+    FAILURE TO COMPLY WILL RESULTS IN MARK DEDUCTION*/
+
+
+/*    MOBILE VIEW   */
+@media screen and (max-width: 480px){
+    .main{
+      display: grid;
+      grid-template-columns: 100%;
+      font-size: 1.5em;
+      grid-gap: 0;
+      text-align: center;
+    }
+
+    .spotlight, .col{
+      align-content: center;
+      align-items: stretch;
+      grid-template-rows: 20% 80%;
+    }
+
+    .submain>div:nth-child(1){      /*author*/
+      padding: 5px;
+      background-color: lightseagreen;
+    }
+
+    .submain>div:nth-child(2){      /*quote*/
+      padding: 10px;
+      background-color: skyblue;
+    }    
+}
+
+
+/*  DESKTOP VIEW  */
+@media screen and (min-width: 800px){
+    .main{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 150px;
+      grid-gap: 2em;
+      font-size: 1em;
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .spotlight, .col{
+      display: grid;
+      align-content: center;
+      align-items: stretch;
+      grid-template-rows: 80% 20%;
+    }
+
+    .spotlight{ grid-column: 2/5; }
+    .col{ grid-column: 1/2; }
+
+    .main>div:nth-child(2){ grid-row: 1/2; }
+    .main>div:nth-child(3){ grid-row: 2/3; }
+    .main>div:nth-child(4){ grid-row: 3/4; }
+    .main>div:nth-child(5){ grid-row: 4/5; }
+
+    .spotlight>div:nth-child(odd){ grid-row: 2/3; }
+    .col>div:nth-child(odd){ grid-row: 2/3; }
+
+
+    .submain>div:nth-child(1){      /*author*/
+      padding: 5px;
+      background-color: lightseagreen;
+    }
+
+    .submain>div:nth-child(2){      /*quote*/
+      background-color: skyblue;
+      ;
+    }    
+
+    .col>div:nth-child(2){      /*left quote*/
+      padding: 35px 10px 35px 10px;
+    }
+
+    .spotlight>div:nth-child(2){    /*right quote*/
+      padding: 50px 10px 50px 10px;
+    }
+}
+
+
+/*    TABLET VIEW   */
+@media screen and (min-width: 480px) and (max-width: 799px){
+    .main{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 150px;
+      font-size: 1.25em;
+      grid-gap: 2em;
+      text-align: center;
+    }
+
+    .main>div{
+      background-color: skyblue;
+    }
+
+    .spotlight, .col{
+      display: grid;
+      align-items: center;
+      grid-template-rows: 30% 70%;
+    }
+
+    /* one column */
+    .main>.submain:nth-child(1),
+    .main>.submain:nth-child(2),
+    .main>.submain:nth-child(7),
+    .main>.submain:nth-child(8){
+      grid-column: 1 / span 2;
+    }
+
+    /*  two columns top */
+    .main>.submain:nth-child(3),
+    .main>.submain:nth-child(5){ grid-column: 1/2; }
+
+    /*  two columns bottom */
+    .main>.submain:nth-child(4),
+    .main>.submain:nth-child(6){ grid-column: 2/3; }
+
+
+    /*author*/
+    .submain>div:nth-child(1){
+      padding: 10px;
+      background-color: lightseagreen;
+    }
+
+
+    /*quote*/
+    .submain>div:nth-child(2){
+      padding-right: 30px;
+      padding-left: 30px;
+      background-color: skyblue;
+    }
+
+}
+
+
+
+
+
+  </style>
+</head>
+
+
+<body>
+  <!-- INSTRUCTIONS
+    YOU ARE NOT ALLOWED TO CHANGE ANY PART OF THE HTLM CODES (SUCH AS ADDING ID attributes or additional values to the classes atributes.) 
+  
+    YOUR TASK IS TO WRITE THE CSS CODE TO ACHIEVE THE REQUIRED OUTPUT-->
+<div class="main">
+  
+<div class="submain spotlight">
+  <div>Mark Twain</div>
+  <div>The man who does not read books has no advantage over the one who cannot read them.</div>
+</div>
+<div class="submain col">
+  <div>Mason Cooley</div>
+  <div>Procrastination makes easy things hard and hard things harder.</div>
+</div>
+<div class="submain col">
+  <div>Albert Einstein</div>
+  <div>
+A person who never made a mistake never tried anything new.</div>
+</div>
+<div class="submain col">
+  <div>Elon Musk</div>
+  <div>
+I think it’s possible to ordinary people to choose to be extraordinary.</div>
+</div>
+
+<div class="submain col">
+  <div>Jim Ryun</div>
+  <div>
+Motivation is what gets you started. Habit is what keeps you going.</div>
+</div>
+
+<div class="submain spotlight">
+  <div>Dr. Seuss</div>
+  <div>
+The more that you read, the more things you will know, the more that you learn, the more places you’ll go.</div>
+</div>
+
+<div class="submain spotlight">
+  <div>Chinese Proverb</div>
+  <div>
+He who asks a question is a fool for five minutes; he who does not ask a question remains a fool forever.</div>
+</div>
+
+<div class="submain spotlight">
+  <div>Martin Luther king</div>
+  <div>
+If you can’t fly, then run. If you can’t run, then walk. If you can’t walk, then crawl. But by all means, keep moving</div>
+</div>
+
+
+</div>
+</body>
+</html>
