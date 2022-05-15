@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>wk10-e-c</title>
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <style>
+    body{display: grid; width: 80%;margin: 0 auto;grid-template-columns:repeat(5, 2fr) ;grid-auto-rows: 3.5em;}
+
+            /*no additional css is required*/
+
+  </style>
+</head>
+
+
+<!-- do not insert additional id attributes to any element -->
+<!-- do not remove any inline styles -->
+
+<body>
+<h3 style="grid-column: 1/span 5">Online grocery order</h3>
+<p style="grid-column: 1/span 5">Tick the checkboxes to show items</p>
+<div><input  onclick="checkbox1()" type="checkbox" name="items" value="fruits" >fruits</div>
+<div><input  onclick="checkbox1()" type="checkbox" name="items" value="fish">fish</div>
+<div><input  onclick="checkbox1()" type="checkbox" name="items" value="vegetables">vegetables</div>
+<div><input  onclick="checkbox1()" type="checkbox" name="items" value="beef">beef</div>
+<div></div>
+
+
+<div>Item</div>
+<div>base price per 100gm</div>
+<div>quality</div>
+<div>quantity</div>
+<div>total</div>
+
+<div class="fruits allitems">Durian Musang King</div>
+<div class="fruits allitems">45.67</div>
+<div class="fruits allitems">
+  <input type="radio" name="fruitquality" value="normal" onclick="enableSlider()" required>normal
+  <input type="radio" name="fruitquality" value="premium" onclick="enableSlider()" required>premium
+</div>
+<div class="fruits allitems"><input type="range" onchange="slider(this.value)" class="sliders" name="fruitqty" value="100" min="100" max="1000" id="fruitqty"><span id="fruitqtyvalue"></span></div>
+<div class="fruits allitems"><!-- (result of base price*quantity) + normal/premium percentage. using id attribute not allowed--></div>
+
+<div class="fishes allitems">Alaskan Bluefin Tuna</div>
+<div class="fishes allitems">67.89</div>
+<div class="fishes allitems">
+  <input type="radio" name="fishquality" value="normal" onclick="enableSlider()" >normal
+  <input type="radio" name="fishquality" value="premium" onclick="enableSlider()" >premium
+</div>
+<div class="fishes allitems"><input type="range" onchange="slider(this.value)" class="sliders" name="fishqty" value="100" min="100" max="1000" id="fishqty"> <span id="fishqtyvalue"></span></div>
+<div class="fishes allitems"><!-- (result of base price*quantity) + normal/premium percentage. using id attribute not allowed--></div>
+
+
+<div class="vegetables allitems">Black truffle</div>
+<div class="vegetables allitems">79.33</div>
+<div class="vegetables allitems">
+  <input type="radio" name="vegetablesquality" value="normal" onclick="enableSlider()" >normal
+  <input type="radio" name="vegetablesquality" value="premium" onclick="enableSlider()" >premium
+</div>
+<div class="vegetables allitems"><input type="range" onchange="slider(this.value)" class="sliders" name="fruitqty" value="100" min="100" max="1000" id="vegetablesqty"> <span id="vegetablesqtyvalue"></span></div>
+<div class="vegetables allitems"><!-- (result of base price*quantity) + normal/premium percentage. using id attribute not allowed--></div>
+
+
+<div class="meats allitems">wagyu steak</div>
+<div class="meats allitems">97.55</div>
+<div class="meats allitems">
+  <input type="radio" name="meatquality" value="normal" onclick="enableSlider()" >normal
+  <input type="radio" name="meatquality" value="premium" onclick="enableSlider()" >premium
+</div>
+<div class="meats allitems"><input type="range" onchange="slider(this.value)" class="sliders" name="meatqty" value="100" min="100" max="1000" id="meatqty"> <span id="meatqtyvalue"></span></div>
+<div class="meats allitems"><!-- (result of base price*quantity) + normal/premium percentage. using id attribute not allowed--></div>
+
+
+<div style="grid-column: 1/span 4;" class="thirdlastrow allitems">
+  <select name="membership" id="membership" onchange="member(this)">
+    <option value="0">select membership</option>
+    <option value="non-member">non member</option>
+    <option value="member">member</option>
+  </select>
+</div>
+<div class="allitems thirdlastrow"  ><button onclick="button()">finalize</button></div>
+<div style="grid-column: 1/span 4;" class="allitems">Total purchases</div><div id="grandtotal" class="allitems thirdlastrow"></div>
+
+
+
+<div class="memberonly">With your membership, you pay </div><div id="finaltotal"  style="grid-column: 2/span 2"  class="memberonly"></div><div  class="memberonly">You saved </div><div id="saving"  class="memberonly"></div>
+<div class="memberonly">From this purchases, points earned: </div><div id="loyaltypoints"  style="grid-column: 2/span 4"  class="memberonly"></div>
+
+
+<script>
+ //write all the required functions here
+ //indentation is important
+ //also neatness
+
+// repitition is not in the syllabus. but students may use loop since  they learnt this concept in ITP
+//  you are expected to use since covered in the classes:
+// function with parameters
+// getElementsByName
+// getElementsById
+
+// additionally
+// getElementsByClassName
+
+// ----------------------------------------------------
+
+const allItems = document.getElementsByClassName("allitems");
+const sliders  = document.getElementsByClassName("sliders");
+const memberonly = document.getElementsByClassName("memberonly");
+
+
+
+
+
+
+
+for (var i = 0; i < allItems.length; i++) {
+  
+  allItems[i].style.display = "none";
+}
+
+for (var i = 0; i < sliders.length; i++){
+  sliders[i].disabled = true;  
+}
+
+for (var i = 0; i < memberonly.length; i++) {
+  
+  memberonly[i].style.display = "none";
+}
+
+
+
+
+
+function checkbox1(){
+  var items = document.getElementsByName("items");
+ const allItems = document.getElementsByClassName("allitems");
+ const grandtotal = document.getElementById("grandtotal");
+ const membership = document.getElementById("membership").value;
+
+ //unhide cetagory
+ const fruits = document.getElementsByClassName("fruits");
+ const fishes = document.getElementsByClassName("fishes");
+ const vegetables = document.getElementsByClassName("vegetables");
+ const meats = document.getElementsByClassName("meats");
+ const thirdlastrow = document.getElementsByClassName("thirdlastrow");
+ 
+ //unhide radio and stuff
+ var fruitquality = document.getElementsByName("fruitquality");
+ var fishquality = document.getElementsByName("fishquality");
+ var vegetablesquality = document.getElementsByName("vegetablesquality");
+ var meatquality = document.getElementsByName("meatquality");
+
+
+
+ for (var i = 0; i < items.length; i++){
+  if (items[i].checked == true){
+
+
+
+
+    //unhide fruits
+    if(items[i].value === "fruits"){
+
+    for (var i = 0; i < allItems.length; i++) {
+    allItems[i].style.display = "none";}
+
+
+    for (var j = 0; j < fruits.length; j++){
+    fruits[j].style.display = "inline-block";}
+
+    for (var k = 0; k < fruitquality.length; k++){
+    fruitquality[k].style.display = "inline-block";}
+
+    for (var j = 0; j < fruits.length; j++){
+    fruits[j].style.display = "inline-block";}
+
+    //unhide fish
+    }else if(items[i].value === "fish"){
+
+    for (var i = 0; i < allItems.length; i++) {
+    allItems[i].style.display = "none";}
+
+    for (var j = 0; j < fishes.length; j++){
+    fishes[j].style.display = "inline-block";}
+
+    for (var k = 0; k < fishquality.length; k++){
+    fishquality[k].style.display = "inline-block";}
+
+    for (var j = 0; j < fishes.length; j++){
+    fishes[j].style.display = "inline-block";}
+
+    //unhide vagetables
+   }else if(items[i].value === "vegetables"){
+
+    for (var i = 0; i < allItems.length; i++) {
+    allItems[i].style.display = "none";}
+
+    for (var j = 0; j < vegetables.length; j++){
+    vegetables[j].style.display = "inline-block";}
+
+    for (var k = 0; k < vegetablesquality.length; k++){
+    vegetablesquality[k].style.display = "inline-block";}
+
+    for (var j = 0; j < vegetables.length; j++){
+    vegetables[j].style.display = "inline-block";}
+
+    //unhide beef
+   }else if(items[i].value === "beef"){
+
+    for (var i = 0; i < allItems.length; i++) {
+    allItems[i].style.display = "none";}
+
+    for (var j = 0; j < meats.length; j++){
+    meats[j].style.display = "inline-block";}
+
+    for (var k = 0; k < meatquality.length; k++){
+    meatquality[k].style.display = "inline-block";}
+
+    for (var j = 0; j < meats.length; j++){
+    meats[j].style.display = "inline-block";}
+
+  }
+
+  for (var j = 0; j < thirdlastrow.length; j++) {
+    thirdlastrow[j].style = "display : block ! important";
+  }
+
+ }else if(items[i].checked == false){
+
+  for (var j = 0; j < allItems.length; j++) {
+  
+  allItems[j].style.display = "none";
+}
+
+} 
+
+
+
+
+}
+
+
+
+  };
+
+  function member(select){
+    const membership = document.getElementById("membership").value;
+
+     if(membership === "member"){
+    for (var i = 0; i < memberonly.length; i++) {
+  memberonly[i].style.display = "block";
+};
+
+  }else if(membership === "non-member" || membership === "0" ) {
+    for (var i = 0; i < memberonly.length; i++) {
+  memberonly[i].style.display = "none";
+};
+
+  }
+
+  }
+
+
+  function enableSlider(){
+     var fruitquality = document.getElementsByName("fruitquality");
+     var fishquality = document.getElementsByName("fishquality");
+     var vegetablesquality = document.getElementsByName("vegetablesquality");
+     var meatquality = document.getElementsByName("meatquality");
+
+
+     //slider
+    for(var r = 0; r <=2; r++){
+
+    if(fruitquality[r].value == "normal" || fruitquality[r].value == "premium" || fishquality[r].value == "normal" ||fishquality[r].value == "premium" || vegetablesquality[r].value == "normal" || vegetablesquality[r].value == "premium" || meatquality[r].value == "normal" || meatquality[r].value == "premium"){
+ for(var k = 0; k <=sliders.length; k++){
+     sliders[k].disabled = false; }
+
+   } else{
+    sliders[k].disabled = true;  
+   }
+
+    }
+  };
+
+
+
+
+    function slider(val){
+
+
+      const fruits = document.getElementsByClassName("fruits");
+ const fishes = document.getElementsByClassName("fishes");
+ const vegetables = document.getElementsByClassName("vegetables");
+ const meats = document.getElementsByClassName("meats");
+
+    var fruitqtyvalue = document.getElementById("fruitqtyvalue");
+    var fishqtyvalue = document.getElementById("fishqtyvalue");
+    var vegetablesqtyvalue = document.getElementById("vegetablesqtyvalue");
+    var meatqtyvalue = document.getElementById("meatqtyvalue");
+  
+    fruitqtyvalue.innerHTML = sliders[0].value;
+    fishqtyvalue.innerHTML = sliders[1].value;
+    vegetablesqtyvalue.innerHTML = sliders[2].value;
+    meatqtyvalue.innerHTML = sliders[3].value;
+
+
+
+    fruits[4].innerHTML = sliders[0].value / 45.67;
+    fishes[4].innerHTML = sliders[1].value / 67.89;
+    vegetables[4].innerHTML = sliders[2].value / 79.33;
+    meats[4].innerHTML = sliders[3].value / 97.55;
+  }
+
+  function buntton(){
+
+    var grandtotal = getElementById("grandtotal");
+
+    for (var i = 0; i < allItems.length; i++) {
+  
+  allItems[i].style.display = "block";
+}
+
+grandtotal.innerHTML = sliders[0].value * 45.67;
+
+
+
+
+  };
+
+
+
+
+
+
+</script>
+</body>
+</html>
